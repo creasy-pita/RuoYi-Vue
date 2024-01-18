@@ -1,6 +1,8 @@
 package com.ruoyi.project.system.controller;
 
 import java.util.List;
+
+import com.ruoyi.common.utils.SecurityUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -76,6 +78,7 @@ public class NewsController extends BaseController
     @PostMapping
     public AjaxResult add(@RequestBody News news)
     {
+        news.setCreateBy(SecurityUtils.getUsername());
         return toAjax(newsService.insertNews(news));
     }
 
@@ -87,6 +90,7 @@ public class NewsController extends BaseController
     @PutMapping
     public AjaxResult edit(@RequestBody News news)
     {
+        news.setUpdateBy(SecurityUtils.getUsername());
         return toAjax(newsService.updateNews(news));
     }
 

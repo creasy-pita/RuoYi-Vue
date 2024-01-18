@@ -41,21 +41,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="title != null  and title != ''">title,</if>
             <if test="brief != null  and brief != ''">brief,</if>
             <if test="content != null  and content != ''">content,</if>
-            <if test="createTime != null ">create_time,</if>
             <if test="createBy != null  and createBy != ''">create_by,</if>
             <if test="updateTime != null ">update_time,</if>
             <if test="updateBy != null  and updateBy != ''">update_by,</if>
             <if test="deleteFlag != null ">delete_flag,</if>
+            create_time
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="title != null  and title != ''">#{title},</if>
             <if test="brief != null  and brief != ''">#{brief},</if>
             <if test="content != null  and content != ''">#{content},</if>
-            <if test="createTime != null ">#{createTime},</if>
             <if test="createBy != null  and createBy != ''">#{createBy},</if>
             <if test="updateTime != null ">#{updateTime},</if>
             <if test="updateBy != null  and updateBy != ''">#{updateBy},</if>
             <if test="deleteFlag != null ">#{deleteFlag},</if>
+            sysdate()
          </trim>
     </insert>
 
@@ -67,9 +67,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="content != null  and content != ''">content = #{content},</if>
             <if test="createTime != null ">create_time = #{createTime},</if>
             <if test="createBy != null  and createBy != ''">create_by = #{createBy},</if>
-            <if test="updateTime != null ">update_time = #{updateTime},</if>
             <if test="updateBy != null  and updateBy != ''">update_by = #{updateBy},</if>
             <if test="deleteFlag != null ">delete_flag = #{deleteFlag},</if>
+            update_time = sysdate()
         </trim>
         where id = #{id}
     </update>
